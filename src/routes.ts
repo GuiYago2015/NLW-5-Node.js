@@ -1,14 +1,17 @@
 import {Router} from "express";
-import { getCustomRepository } from "typeorm";
 import { SettingsController } from "./controllers/SettingsController";
-
-import { SettingsRepository } from "./repositories/SettingsRepository";
+import { UsersController } from "./controllers/UsersController";
+import { MessagesController } from "./controllers/MessagesController";
 
 const routes = Router();
 
 const settingsController = new SettingsController();
+const usersController = new UsersController();
+const messagesController = new MessagesController();
 
+routes.post("/users", usersController.create);
 routes.post("/settings", settingsController.create);
+routes.post("/messages", messagesController.create);
 
 
 
